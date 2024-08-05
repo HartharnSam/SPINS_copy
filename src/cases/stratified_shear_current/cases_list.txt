@@ -1,0 +1,10 @@
+casename,  z_bc,  pyc_perc, rho_dir_bc, delta_u,  slope, final_time
+classic_shear,    FREE_SLIP, 0.5,  false,   0.3617,  0, 100
+stratified_shear_nr_sb1,FREE_SLIP, 0.6,  false,   0.3617,  0, 100
+stratified_shear_nr_sb2,FREE_SLIP, 0.8,  false,   0.3617,  0, 100
+stratified_shear_nr_sb3,FREE_SLIP, 0.9,  false,   0.3617,  0, 100
+stratified_shear_nr_sb4,FREE_SLIP, 0.95,  false,   0.3617,  0, 100
+tlt_stratified_shear_nr_sb1,FREE_SLIP, 0.95,  false,   0.3617,  2, 100
+tlt_stratified_shear_nr_nsb1,NO_SLIP, 0.95,  false,   0.3617,  2, 100
+tlt_stratified_shear_nr_ns_dirb1,NO_SLIP, 0.95,  true,   0.3617,  2, 100
+tlt_stratified_shear_nr_ns_dirb2,NO_SLIP, 1,  true,   0,  2, 600
