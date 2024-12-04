@@ -1,0 +1,52 @@
+--- SPINS_main.orig/make_deps.sh	2022-03-11 09:31:04.763680030 +0000
++++ SPINS_main/make_deps.sh	2022-03-11 11:07:45.286930313 +0000
+@@ -75,6 +75,7 @@
+ 	fi
+ 	(tar -xzvf blitz_1.0.2.tar.gz > /dev/null) || (echo "Untar of Blitz FAILED"; exit 1);
+ 	pushd blitz-1.0.2
++	find m4 -type l ! -exec test -e {} \; -delete
+ 	(autoreconf -vif && ./configure --prefix="$CWD" --disable-fortran "${BLITZ_OPTIONS}" > /dev/null) && \
+ 		(make lib > /dev/null) && \
+ 		pushd blitz && (make install > /dev/null) && popd  && \
+--- SPINS_main.orig/systems/rocket.sh	2022-03-11 11:57:35.169038263 +0000
++++ SPINS_main/systems/rocket.sh	2022-03-11 11:59:00.277496783 +0000
+@@ -6,9 +6,10 @@
+ CC=icc
+ CXX=icpc
+ LD=icpc
++MPICXX=mpiicpc
+ 
+ # System-specific compiler flags
+-SYSTEM_CFLAGS="-Wall -wd279 -wd383 -wd444 -wd869 -wd981 -wd1418 -wd1419 -wd1572"
++SYSTEM_CFLAGS=
+ SYSTEM_LDFLAGS=
+ 
+ # Compiler flags for debugging
+@@ -27,9 +28,9 @@
+ # probably not be necessary on systems with a working mpicc
+ # alias
+ MPI_CFLAGS=
+-MPI_LIB="-lmpi -lmpi++"
+-MPI_LIBDIR=-L/opt/sgi/mpt/mpt-2.01/lib
+-MPI_INCDIR=-I/opt/sgi/mpt/mpt-2.01/include
++MPI_LIB="-lmpi"
++MPI_LIBDIR=
++MPI_INCDIR=
+ 
+ # Library names/locations for LAPACK
+ LAPACK_LIB="-lmkl_intel_lp64 -lmkl_sequential -lmkl_core"
+@@ -45,7 +46,7 @@
+ FFTW_LIBDIR=
+ FFTW_INCDIR=
+ # Have to disable SSE2 on itanium machines like winisk/kazan
+-FFTW_OPTIONS=(--disable-sse2 CFLAGS=${OPTIM_CFLAGS[*]})
++FFTW_OPTIONS=
+ 
+ # Library locations for UMFPACK
+ UMF_INCDIR=
+@@ -59,4 +60,4 @@
+ # Boost toolset override
+ # Works around a boost bug on itanium machines/icc
+ # see boost ticket #5001
+-BOOST_TOOLSET=gcc
++BOOST_TOOLSET=

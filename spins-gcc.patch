@@ -1,0 +1,32 @@
+diff -ruN SPINS_main/make_deps.sh SPINS_main.new/make_deps.sh
+--- SPINS_main/make_deps.sh	2022-03-10 22:52:48.981361860 +0000
++++ SPINS_main.new/make_deps.sh	2022-03-10 22:39:27.470043724 +0000
+@@ -75,6 +75,7 @@
+ 	fi
+ 	(tar -xzvf blitz_1.0.2.tar.gz > /dev/null) || (echo "Untar of Blitz FAILED"; exit 1);
+ 	pushd blitz-1.0.2
++	find m4 -type l ! -exec test -e {} \; -delete
+ 	(autoreconf -vif && ./configure --prefix="$CWD" --disable-fortran "${BLITZ_OPTIONS}" > /dev/null) && \
+ 		(make lib > /dev/null) && \
+ 		pushd blitz && (make install > /dev/null) && popd  && \
+diff -ruN SPINS_main/systems/rocket.sh SPINS_main.new/systems/rocket.sh
+--- SPINS_main/systems/rocket.sh	2022-03-10 22:53:31.359590171 +0000
++++ SPINS_main.new/systems/rocket.sh	2022-03-10 22:39:27.467043707 +0000
+@@ -33,7 +33,7 @@
+ MPI_INCDIR=
+ 
+ # Library names/locations for LAPACK
+-LAPACK_LIB="-llapack -lblas"
++LAPACK_LIB="-lopenblas"
+ LAPACK_LIBDIR=
+ LAPACK_INCDIR=
+ 
+@@ -51,7 +51,7 @@
+ UMF_LIBDIR=
+ 
+ # Location/library for BLAS
+-BLAS_LIB="-lblas"
++BLAS_LIB="-lopenblas"
+ BLAS_LIBDIR=
+ BLAS_INCDIR=
+ 
