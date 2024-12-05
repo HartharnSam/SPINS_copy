@@ -1,15 +1,5 @@
---- SPINS_main.orig/make_deps.sh	2022-03-11 09:31:04.763680030 +0000
-+++ SPINS_main/make_deps.sh	2022-03-11 11:07:45.286930313 +0000
-@@ -75,6 +75,7 @@
- 	fi
- 	(tar -xzvf blitz_1.0.2.tar.gz > /dev/null) || (echo "Untar of Blitz FAILED"; exit 1);
- 	pushd blitz-1.0.2
-+	find m4 -type l ! -exec test -e {} \; -delete
- 	(autoreconf -vif && ./configure --prefix="$CWD" --disable-fortran "${BLITZ_OPTIONS}" > /dev/null) && \
- 		(make lib > /dev/null) && \
- 		pushd blitz && (make install > /dev/null) && popd  && \
---- SPINS_main.orig/systems/rocket.sh	2022-03-11 11:57:35.169038263 +0000
-+++ SPINS_main/systems/rocket.sh	2022-03-11 11:59:00.277496783 +0000
+--- rocket.sh	2022-03-11 11:57:35.169038263 +0000
++++ rocket.sh	2022-03-11 11:59:00.277496783 +0000
 @@ -6,9 +6,10 @@
  CC=icc
  CXX=icpc

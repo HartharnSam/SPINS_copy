@@ -75,6 +75,7 @@ else
 	fi
 	(tar -xzvf blitz_1.0.2.tar.gz > /dev/null) || (echo "Untar of Blitz FAILED"; exit 1);
 	pushd blitz-1.0.2
+	find m4 -type l ! -exec test -e {} \; -delete
 	(autoreconf -vif && ./configure --prefix="$CWD" --disable-fortran "${BLITZ_OPTIONS}" > /dev/null) && \
 		(make lib > /dev/null) && \
 		pushd blitz && (make install > /dev/null) && popd  && \
