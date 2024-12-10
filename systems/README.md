@@ -3,7 +3,7 @@
 - In that directory, download this copy of the code: 
 ```
 git clone https://github.com/HartharnSam/SPINS_main.git
-
+chmod u=rwx ./*
 ```
 From the SPINS\_main directory, run (line by line to check for errors):
 ```
