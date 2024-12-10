@@ -190,9 +190,6 @@ class BaseCase {
       void stresses_bottom(TArrayn::DTArray & u, TArrayn::DTArray & v, TArrayn::DTArray & w,
               TArrayn::DTArray & Hprime, TArrayn::DTArray & temp, TArrayn::Grad * gradient_op,
               const string * grid_type, const double mu, double time, int itercount, bool restarting);
-	  // Point timeseries
-	  void point_ts(TArrayn::DTArray & rho, TArrayn::DTArray & xx,
-        TArrayn::DTArray & zz, const std:vector<double> &z_locs, double x_locs, double time, int itercount, bool restarting);
 };
 
 #include "BaseCase_impl.cc" // Include the implementation of the add_diagnostic template
