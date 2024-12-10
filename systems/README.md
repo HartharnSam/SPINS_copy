@@ -3,12 +3,16 @@
 - In that directory, download this copy of the code: 
 ```
 git clone https://github.com/HartharnSam/SPINS_main.git
+cd SPINS_main
 chmod u=rwx ./*
 ```
 From the SPINS\_main directory, run (line by line to check for errors):
 ```
 module load intel/2021a Autoconf/2.71-GCCcore-10.3.0 Automake/1.16.3-GCCcore-10.3.0 libtool/2.4.6-GCCcore-10.3.0
-patch --verbose -p1 < ./spins-autoconf.patch
+cd systems
+chmod u=rwx ./*
+cd ../
+patch --verbose -p1 < ./spins-intel.patch
 cd systems
 ./makemake.sh rocket
 cd ..
