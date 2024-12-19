@@ -8,7 +8,7 @@ LD=mpiicpc
 MPICXX=mpiicpc
 
 # System-specific compiler flags
-SYSTEM_CFLAGS="-0fast"
+SYSTEM_CFLAGS="-Ofast"
 SYSTEM_LDFLAGS=
 SYSTEM_CXXFLAGS=
 
